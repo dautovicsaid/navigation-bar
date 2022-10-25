@@ -1,0 +1,124 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #151515;
+  color: white;
+  padding: 15px 7vw;
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-logo {
+    color: #9a9432;
+    font-size: 22px;
+  }
+
+  .nav-items a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 15px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: all 0.5s;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+
+  .navbar-wrapper {
+    padding: 5px 5vw;
+
+    .nav-items {
+      position: absolute;
+      top: 60px;
+      display: flex;
+      flex-direction: column;
+      background: black;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: 0.5s;
+
+    }
+
+    .nav-items.open {
+      transform: translateX(0);
+    }
+
+    .nav-menu {
+      display: flex;
+      width: 50px;
+      aspect-ratio: 1;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .bar {
+        position: relative;
+        width: 32px;
+        height: 2px;
+        background: white;
+        transition: all 0.5s ease-in-out;
+
+        &::before, &::after {
+          content: "";
+          position: absolute;
+          height: 2px;
+          background: white;
+          border-radius: 2px;
+          transition: all 0.5s ease-in-out;
+        }
+
+        &::before {
+          width: 32px;
+          transform: translateY(-8px);
+          left: 0;
+        }
+
+        &::after {
+          width: 32px;
+          transform: translateY(8px);
+          left: 0;
+        }
+      }
+    }
+
+    .nav-menu.open {
+      .bar {
+        transform: translateX(-40px);
+        background: transparent;
+
+        &::before {
+          transform: rotate(45deg) translate(26px, -26px);
+        }
+
+        &::after {
+          transform: rotate(-45deg) translate(26px, 26px);
+        }
+      }
+
+    }
+  }
+}
+
+
+
+
